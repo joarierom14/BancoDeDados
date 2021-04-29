@@ -1,0 +1,90 @@
+/*
+
+--criar tabela no banco de dados
+CREATE TABLE Pessoa (
+	idPessoa int,
+    nomePessoa varchar(250),
+    idade int 
+);
+
+-- Adicionar dados na table pessoa
+INSERT INTO pessoa (idPessoa, nomePessoa, idade) VALUES (1, 'Silvia', 25);
+INSERT INTO pessoa (idPessoa, nomePessoa, idade) VALUES (1, 'Maria', 25);
+
+-- Selecionar os dados da tabela
+-- SELECT idPessoa, nomePessoa, idade FROM pessoa;
+-- SELECT * FROM pessoa;
+
+-- Deletar a table
+-- DROP TABLE pessoa;
+
+-- Foi adicionado a chave primaria na tabela
+CREATE TABLE Pessoa (
+	idPessoa int PRIMARY KEY,
+    nomePessoa varchar(250),
+    idade int 
+);
+
+-- Só é possível adicionar pessoas com id que tenham valores diferentes.
+INSERT INTO pessoa (idPessoa, nomePessoa, idade) VALUES (2, 'Silvia', 25);
+INSERT INTO pessoa (idPessoa, nomePessoa, idade) VALUES (3, 'Maria', 25);
+
+-- Deletar a table
+DROP TABLE pessoa;
+
+-- Foi adicionado a chave primaria com auto_increment na tabela
+CREATE TABLE Pessoa (
+	idPessoa int PRIMARY KEY AUTO_INCREMENT,
+    nomePessoa varchar(250),
+    idade int 
+);
+
+*/
+
+-- Não precisa adicionar o valor do Id. O auto increment foi adicionado.
+-- INSERT INTO pessoa (nomePessoa, idade) VALUES ('Silvia', 25);
+-- INSERT INTO pessoa (nomePessoa, idade) VALUES ('Maria', 25);
+
+/*
+CREATE TABLE UF_Estado (
+	sigla_UF char(2) PRIMARY KEY,
+    nome_UF varchar(45)
+);
+
+CREATE TABLE Municipio (
+	id_ int PRIMARY KEY,
+    nome_Municipio varchar(45),
+    sigla_UF char(2)
+);
+
+CREATE TABLE UF_Estado (
+    sigla_UF char(2) PRIMARY KEY,
+    nome_UF varchar(50)
+);
+
+CREATE TABLE Municipio (
+    id_Municipio int PRIMARY KEY AUTO_INCREMENT,
+    nome_Municipio varchar(50),
+    fk_UF_Estado_sigla_UF char(2)
+);
+ 
+ALTER TABLE Municipio ADD CONSTRAINT FK_Municipio_2
+    FOREIGN KEY (fk_UF_Estado_sigla_UF)
+    REFERENCES UF_Estado (sigla_UF)
+    ON DELETE RESTRICT;
+
+-- Não precisa adicionar o valor do Id. O auto increment foi adicionado.
+INSERT INTO municipio (nome_Municipio) VALUES ('Americana');
+INSERT INTO municipio (nome_Municipio) VALUES ('Nova Odessa');
+INSERT INTO municipio (nome_Municipio) VALUES ('Sumaré');
+INSERT INTO municipio (nome_Municipio) VALUES ('Campinas');
+INSERT INTO municipio (nome_Municipio) VALUES ('Hortolandia');
+
+INSERT INTO UF_Estado (sigla_UF, nome_UF) VALUES ('SP','São Paulo');
+*/
+-- SELECT * FROM municipio;
+
+ALTER TABLE Municipio ADD CONSTRAINT FK_Municipio_2
+    FOREIGN KEY (fk_UF_Estado_sigla_UF)
+    REFERENCES UF_Estado (sigla_UF)
+    ON DELETE RESTRICT;
